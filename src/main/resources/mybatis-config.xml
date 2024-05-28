@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+
+	<typeAliases>
+		<typeAlias type="com.kh.gbangeSpring.member.model.vo.Member" alias="Member" />
+		<typeAlias type="com.kh.gbangeSpring.training.model.vo.Training" alias="Training" />
+		<typeAlias type="com.kh.gbangeSpring.training.model.vo.TrainingCategory" alias="TrainingCategory" />
+		<typeAlias type="com.kh.gbangeSpring.training.model.vo.Attachment" alias="Attachment" />
+		<typeAlias type="com.kh.gbangeSpring.training.model.vo.Reply" alias="Reply" />
+		<typeAlias type="com.kh.gbangeSpring.common.model.vo.Shoes" alias="Shoes" />
+
+	</typeAliases>
+</configuration>
