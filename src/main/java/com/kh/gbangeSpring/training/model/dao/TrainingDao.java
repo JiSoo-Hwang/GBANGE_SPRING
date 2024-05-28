@@ -3,6 +3,7 @@ package com.kh.gbangeSpring.training.model.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -15,7 +16,7 @@ import com.kh.gbangeSpring.training.model.vo.TrainingCategory;
 
 @Repository
 public class TrainingDao {
-	
+	/*
 	public ArrayList<TrainingCategory> selectCategoryList(SqlSessionTemplate sqlSession) {
 		ArrayList<TrainingCategory> tCList = new ArrayList<>();
 		
@@ -27,25 +28,25 @@ public class TrainingDao {
 		return result;
 	}
 
+	 */
 	public int increaseCount(SqlSessionTemplate sqlSession, int tno) {
 		int result = 0;
 		return result;
 	}
-
 	public int listCount(SqlSessionTemplate sqlSession) {
-
-		int listCount = 0;
-
-
+		int listCount = sqlSession.selectOne("trainingMapper.listCount");
+		System.out.println(listCount);
 		return listCount;
 	}
 
 	public ArrayList<Training> selectList(SqlSessionTemplate sqlSession, PageInfo pi) {
-
-		ArrayList<Training> list = new ArrayList<>();
-		return list;
+		
+		int limit = pi.getBoardLimit();
+		int offset = (pi.getCurrentPage()-1)*limit;
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		return (ArrayList)sqlSession.selectList("trainingMapper.selectList", null, rowBounds);
 	}
-
+/*
 	public int selectTrainingNo(SqlSessionTemplate sqlSession) {
 		int trainingNo = 0;
 		return trainingNo;
@@ -56,12 +57,12 @@ public class TrainingDao {
 		int result = 0;
 		return result;
 	}
-
-	public Training selectTraining(SqlSessionTemplate sqlSession, int tno) {
-		Training t = new Training();
-		return t;
+*/
+	public Training selectTraining(SqlSessionTemplate sqlSession, int trainingNo) {
+		
+		return sqlSession.selectOne("trainingMapper.selectTraining",trainingNo);
 	}
-
+/*
 	public Attachment selectAttachment(SqlSessionTemplate sqlSession, int tno) {
 		Attachment at = null;
 		return at;
@@ -136,5 +137,5 @@ public class TrainingDao {
 		ArrayList<Training> searchList = new ArrayList<>();
 		return searchList;
 	}
-
+*/
 }

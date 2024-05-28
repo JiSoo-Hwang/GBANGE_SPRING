@@ -1,24 +1,13 @@
 package com.kh.gbangeSpring.member.controller;
 
-import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
-import com.kh.gbangeSpring.member.model.service.MemberService;
-import com.kh.gbangeSpring.member.model.vo.Member;
-
-@Controller
 public class MemberController {
 	
-	@Autowired
+/*	
 	private MemberService memberService;
 	
-	@Autowired
+	
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	
@@ -44,20 +33,26 @@ public class MemberController {
 		return mv;
 	}
 	
-	@GetMapping
+	@GetMapping("login.me")
 	public String loginPage() {
 		return "member/loginForm";
 	}
 	
-	@PostMapping
-	public String loginMember(Member m, ModelAndView mv,HttpSession session) {
+	@PostMapping("login.me")
+	public ModelAndView loginMember(Member m, ModelAndView mv,HttpSession session) {
 		
 		Member loginUser = memberService.loginMember(m);
 		
-		
-		
-		return "";
+		if(loginUser == null || !bCryptPasswordEncoder.matches(m.getMemberPwd(), loginUser.getMemberPwd())) {
+			mv.addObject("alertMsg", "로그인 실패ㅠㅠ");
+			mv.setViewName("redirect:/");
+		}else {
+			session.setAttribute("alertMsg", loginUser.getMemberName()+"님 환영합니다^^");
+			session.setAttribute("loginUser", loginUser);
+			mv.setViewName("redirect:/");
+		}
+		return mv;
 	}
 	
-	
+	*/
 }

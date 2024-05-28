@@ -208,11 +208,11 @@ a {
 					<c:otherwise>
 						<c:forEach var="t" items="${list}">
 							<div class="list-area">
-								<div class="num">${training.trainingNo }</div>
-								<div class="title body">${training.trainingTitle }</div>
-								<div class="writer">${training.trainingWriter }</div>
-								<div class="date">${training.recordDate }</div>
-								<div class="count">${training.count }</div>
+								<div class="num">${t.trainingNo }</div>
+								<div class="title body">${t.trainingTitle }</div>
+								<div class="writer">${t.trainingWriter }</div>
+								<div class="date">${t.recordDate }</div>
+								<div class="count">${t.count }</div>
 							</div>
 						</c:forEach>
 					</c:otherwise>
@@ -222,7 +222,7 @@ a {
 			$(function() {
 				$(".body").click(function() {
 					var tno = $(this).prev().html();
-					location.href="detail.tr?tno="+tno;
+					location.href="detail.tr?trainingNo="+tno;
 				});
 				$(".body").mouseenter(function(){
 					$(this).css("cursor","pointer");
@@ -255,7 +255,7 @@ a {
 			</div>
 			<br>
 			<div class="search_form" style="text-align: center; margin-bottom: 20px;">
-            <form action="/gbangeSpring/search.tr" method="get">
+            <form action="search.tr" method="get">
                 <input type="hidden" name="currentPage" value="1">
                 <select name="searchType" style="font-size: 1.1rem; padding: 10px; margin: 5px;">
                     <option value="title">제목</option>
@@ -267,7 +267,7 @@ a {
             </form>
 		</div>
 			<div class="bt_wrap">
-				<a href="/gbangeSpring/insert.tr" class="on">글쓰기</a> 
+				<a href="insert.tr" class="on">글쓰기</a> 
 			</div>
 		</div>
 	</div>

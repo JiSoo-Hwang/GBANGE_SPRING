@@ -33,6 +33,7 @@ public class TrainingController {
 	@Autowired
 	private TrainingService trainingService;
 	
+	/*
 	@GetMapping("insert.tr")
 	public ModelAndView insertTrainingForm(ModelAndView mv) {
 		
@@ -78,7 +79,7 @@ public class TrainingController {
 		}
 		
 	}
-	
+	*/
 	@RequestMapping("list.tr")
 	public String trainingList(int currentPage
 							,Model model) {
@@ -94,7 +95,7 @@ public class TrainingController {
 		
 		return "training/trainingListView";
 	}
-	
+	/*
 	@RequestMapping("detail.tr")
 	public ModelAndView selectTraining(int trainingNo
 								,ModelAndView mv) {
@@ -103,8 +104,9 @@ public class TrainingController {
 			Training t = trainingService.selectTraining(trainingNo);
 			mv.addObject("training", t).setViewName("training/trainingDetailView");
 		}else {
-			mv.addObject("alertMsg", "일지 조회 실패ㅠㅠ").setViewName("/");
+			mv.addObject("alertMsg", "일지 조회 실패ㅠㅠ").setViewName("common/header");
 		}
 		return mv;
 	}
+	*/
 }

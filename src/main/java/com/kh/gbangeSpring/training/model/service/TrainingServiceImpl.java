@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.kh.gbangeSpring.common.model.vo.PageInfo;
 import com.kh.gbangeSpring.common.model.vo.Shoes;
@@ -14,13 +15,15 @@ import com.kh.gbangeSpring.training.model.vo.Reply;
 import com.kh.gbangeSpring.training.model.vo.Training;
 import com.kh.gbangeSpring.training.model.vo.TrainingCategory;
 
+@Service
 public class TrainingServiceImpl implements TrainingService {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	@Autowired
 	private TrainingDao trainingDao;
-	
+	/*
 	@Override
 	public ArrayList<TrainingCategory> selectCategoryList() {
 		return trainingDao.selectCategoryList(sqlSession);
@@ -30,7 +33,7 @@ public class TrainingServiceImpl implements TrainingService {
 	public int insertTraining(HashMap<Training, Attachment> map) {
 		return trainingDao.insertTraining(sqlSession, map);
 	}
-
+*/
 	@Override
 	public int increaseCount(int tno) {
 		return trainingDao.increaseCount(sqlSession, tno);
@@ -45,11 +48,11 @@ public class TrainingServiceImpl implements TrainingService {
 	public ArrayList<Training> selectList(PageInfo pi) {
 		return trainingDao.selectList(sqlSession, pi);
 	}
-
 	@Override
-	public Training selectTraining(int tno) {
-		return trainingDao.selectTraining(sqlSession, tno);
+	public Training selectTraining(int trainingNo) {
+		return trainingDao.selectTraining(sqlSession, trainingNo);
 	}
+	/*
 
 	@Override
 	public Attachment selectAttachment(int tno) {
@@ -120,5 +123,5 @@ public class TrainingServiceImpl implements TrainingService {
 	public ArrayList<Training> searchByContent(PageInfo pi, String keyword) {
 		return trainingDao.searchByContent(sqlSession, pi, keyword);
 	}
-
+*/
 }

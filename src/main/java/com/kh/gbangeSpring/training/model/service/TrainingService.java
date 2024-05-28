@@ -11,17 +11,18 @@ import com.kh.gbangeSpring.training.model.vo.Training;
 import com.kh.gbangeSpring.training.model.vo.TrainingCategory;
 
 public interface TrainingService {
+	/*
 	public ArrayList<TrainingCategory> selectCategoryList();
 
 	public int insertTraining(HashMap<Training, Attachment> map);
-
+*/
 	public int increaseCount(int tno);
 
 	public int listCount();
 	public ArrayList<Training> selectList(PageInfo pi);
+	public Training selectTraining(int trainingNo);
 
-	public Training selectTraining(int tno);
-
+	/*
 	public Attachment selectAttachment(int tno);
 
 	public int updateTraining(Training t, Attachment at);
@@ -49,5 +50,5 @@ public interface TrainingService {
 	public ArrayList<Training> searchByCategory(PageInfo pi,String keyword);
 
 	public ArrayList<Training> searchByContent(PageInfo pi,String keyword);
-
+*/
 }

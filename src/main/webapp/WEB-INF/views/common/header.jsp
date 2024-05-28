@@ -65,46 +65,47 @@ nav{
 }
 </style>
 <body>
-<script>
-var msg = "<%=alertMsg%>";
-if(msg!="null"){
-alert(msg);
-<%session.removeAttribute("alertMsg");%>
-}
-</script>
+<%-- <c:if test="${not empty alertMsg }">
+	<script>
+	alert("${alertMsg}");
+	</script>
+	<c:remove var="alertMsg"/>
+</c:if> --%>
+
+
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
   <nav id="top-nav">
     <ul>
-    	<c:choose>
+    	<%-- <c:choose>
     		<c:when test="${empty loginUser }">
 		        <li><input type="button" onclick="loginView();" value="로그인" class="btn btn-info"></li>
     		</c:when>
     		<c:otherwise>
-    			<li><input type="button" onclick="myPage();" value="<%=loginUser.getMemberId() %>" class="btn btn-info"></li>
+    			<li><input type="button" onclick="myPage();" value="${loginUser.memberId}" class="btn btn-info"></li>
     		</c:otherwise>
-    	</c:choose>
-        <li><a href="https://www.instagram.com/"><img style="width:32px; height:32px;" id="user-profile" src="views/common/resources/img/free-icon-instagram-733558.png"></a> </li>
-        <li><a href="https://www.facebook.com/?locale=ko_KR"><img style="width:32px; height:32px;" id="user-profile" src="views/common/resources/img/free-icon-facebook-220200.png"></a></li>
+    	</c:choose> --%>
+        <li><a href="https://www.instagram.com/"><img style="width:32px; height:32px;" id="user-profile" src="/WEB-INF/views/common/img/free-icon-instagram-733558.png"></a> </li>
+        <li><a href="https://www.facebook.com/?locale=ko_KR"><img style="width:32px; height:32px;" id="user-profile" src="/WEB-INF/views/common/img/free-icon-facebook-220200.png"></a></li>
     </ul>
 </nav>
 <nav id="nav2">
-      <a href="/"> <img src="/gbange/views/common/resources/img/Logo-Black.png" alt="지방이" class="logo"></a>
+      <a href="/"> <img src="/WEB-INF/views/common/img/Logo-Black.png" alt="지방이" class="logo"></a>
         <ul>
-          <li><a href="/gbangeSpring/list.no?currentPage=1">공지사항</a></li>
-          <li><a href="/gbangeSpring/list.tr?currentPage=1">러닝일지 게시판</a></li>
-          <li><a href="/gbangeSpring/list.fe?currentPage=1">대회참여인증 게시판</a></li>
-          <li><a href="/gbangeSpring/list.qu">Q/A</a></li>
+          <li><a href="">공지사항</a></li>
+          <li><a href="list.tr?currentPage=1">러닝일지 게시판</a></li>
+          <li><a href="">대회참여인증 게시판</a></li>
+          <li><a href="">Q/A</a></li>
         </ul>
       </nav>
       
-      <script>
+<!--       <script>
       	function loginView(){
-      		location.href="/gbangeSpring/login.me";
+      		location.href="login.me";
       	}
       	
       	function myPage(){
-      		location.href="/gbangeSpring/mypage.me";
+      		location.href="mypage.me";
       	}
-      </script>
+      </script> -->
 </body>
 </html>
