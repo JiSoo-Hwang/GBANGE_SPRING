@@ -4,270 +4,172 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="trainingMapper">
 	<resultMap type="Training" id="trainingResultSet">
-		<result column="TRAINING_NO" property="trainingNo"/>
-		<result column="MEMBER_NAME" property="trainingWriter"/>
-		<result column="TRAINING_TITLE" property="trainingTitle"/>
-		<result column="COUNT" property="count"/>
-		<result column="TRAINING_KEY" property="trainingKey"/>
-		<result column="SHOES_NO" property="shoesNo"/>
-		<result column="TRAINING_DATE" property="trainingDate"/>
-		<result column="RECORD_DATE" property="recordDate"/>
-		<result column="TRAINING_PLACE" property="trainingPlace"/>
-		<result column="TRAINING_TIME" property="trainingTime"/>
-		<result column="TRAINING_GOAL" property="trainingGoal"/>
-		<result column="TRAINING_DISTANCE" property="trainingDistance"/>
-		<result column="WEIGHT" property="weight"/>
-		<result column="TRAINING_CONTENT" property="trainingContent"/>
-		<result column="BOARD_ID" property="boardId"/>
-		<result column="OCSTATUS" property="ocStatus"/>
+		<result column="TRAINING_NO" property="trainingNo" />
+		<result column="MEMBER_NAME" property="trainingWriter" />
+		<result column="TRAINING_TITLE" property="trainingTitle" />
+		<result column="COUNT" property="count" />
+		<result column="TRAINING_KEY" property="trainingKey" />
+		<result column="SHOES_NO" property="shoesNo" />
+		<result column="TRAINING_DATE" property="trainingDate" />
+		<result column="RECORD_DATE" property="recordDate" />
+		<result column="TRAINING_PLACE" property="trainingPlace" />
+		<result column="TRAINING_TIME" property="trainingTime" />
+		<result column="TRAINING_GOAL" property="trainingGoal" />
+		<result column="TRAINING_DISTANCE" property="trainingDistance" />
+		<result column="WEIGHT" property="weight" />
+		<result column="TRAINING_CONTENT" property="trainingContent" />
+		<result column="BOARD_ID" property="boardId" />
+		<result column="OCSTATUS" property="ocStatus" />
 		<result column="STATUS" property="status" />
 	</resultMap>
 
-<!-- 	<resultMap type="TrainingCategory" id="trainingCategoryResultSet">
-		<result column="TRAINING_KEY" property="trainingKey"/>
-		<result column="TRAINING_NAME" property="trainingName"/>
+	<resultMap type="TrainingCategory"
+		id="trainingCategoryResultSet">
+		<result column="TRAINING_KEY" property="trainingKey" />
+		<result column="TRAINING_NAME" property="trainingName" />
 	</resultMap>
 
-	<resultMap type="Attachment" id="attachmentResultSet">
-		<result column="FILE_NO" property="fileNo"/>
-		<result column="REF_BNO" property="refBno"/>
-		<result column="ORIGIN_NAME" property="originName"/>
-		<result column="CHANGE_NAME" property="changeName"/>
-		<result column="FILE_PATH" property="filePath"/>
-		<result column="UPLOAD_DATE" property="uploadDate"/>
-		<result column="FILE_LEVEL" property="fileLevel"/>
-		<result column="STATUS" property="status"/>
-	</resultMap>
-
-	<resultMap type="Reply" id="replyResultSet">
-		<result column="REPLY_NO" property="replyNo"/>
-		<result column="REPLY_CONTENT" property="replyContent"/>
-		<result column="REF_TNO" property="refTno"/>
-		<result column="REPLY_WRITER" property="replyWriter"/>
-		<result column="CREATE_DATE" property="createDate"/>
-		<result column="STATUS" property="status"/>
-	</resultMap>
-	
 	<resultMap type="Shoes" id="shoesResultSet">
-		<result column="SHOES_NO" property="shoesNo"/>
-		<result column="SHOES_NAME" property="shoesName"/>
-		<result column="STATUS" property="status"/>
-	</resultMap> -->
-	
-<!-- <select id="selectCategoryList" resultMap="trainingCategoryResultSet">
-SELECT TRAINING_KEY, TRAINING_NAME
-FROM TRAINING_CATEGORY
-</select>
+		<result column="SHOES_NO" property="shoesNo" />
+		<result column="SHOES_NAME" property="shoesName" />
+		<result column="STATUS" property="status" />
+	</resultMap>
+	<!-- <resultMap type="Attachment" id="attachmentResultSet"> <result column="FILE_NO" 
+		property="fileNo"/> <result column="REF_BNO" property="refBno"/> <result 
+		column="ORIGIN_NAME" property="originName"/> <result column="CHANGE_NAME" 
+		property="changeName"/> <result column="FILE_PATH" property="filePath"/> 
+		<result column="UPLOAD_DATE" property="uploadDate"/> <result column="FILE_LEVEL" 
+		property="fileLevel"/> <result column="STATUS" property="status"/> </resultMap> 
+		<resultMap type="Reply" id="replyResultSet"> <result column="REPLY_NO" property="replyNo"/> 
+		<result column="REPLY_CONTENT" property="replyContent"/> <result column="REF_TNO" 
+		property="refTno"/> <result column="REPLY_WRITER" property="replyWriter"/> 
+		<result column="CREATE_DATE" property="createDate"/> <result column="STATUS" 
+		property="status"/> </resultMap> -->
 
-<insert id="insertTraining">
-INSERT INTO TRAINING (TRAINING_NO
-					,MEMBER_NO
-					,TRAINING_TITLE
-					,COUNT
-					,TRAINING_KEY
-					,SHOES_NO
-					,TRAINING_DATE
-					,RECORD_DATE
-					,TRAINING_PLACE
-					,TRAINING_TIME
-					,TRAINING_GOAL
-					,TRAINING_DISTANCE
-					,WEIGHT
-					,TRAINING_CONTENT
-					,BOARD_ID
-					,OCSTATUS
-					,STATUS
-					,LIKES)
-VALUES (#{trainingNo}
-		,#{trainingWriter}
-		,#{trainingTitle}
-		,#{count}
-		,#{trainingKey}
-		,#{shoesNo}
-		,#{trainingDate}
-		,#{recordDate}
-		,#{trainingPlace}
-		,#{trainingTime}
-		,#{trainingGoal}
-		,#{trainingDistance}
-		,#{weight}
-		,#{trainingContent}
-		,#{boardId}
-		,#{ocStatus}
-		,#{status}
-		)
-</insert>
--->
-<update id="increaseCount" parameterType="_int">
-UPDATE TRAINING
-SET COUNT = COUNT +1
-WHERE TRAINING_NO = #{trainingNo}
-AND STATUS = 'Y'
-</update> 
+	<select id="selectCategoryList"
+		resultMap="trainingCategoryResultSet">
+		SELECT TRAINING_KEY, TRAINING_NAME
+		FROM TRAINING_CATEGORY
+	</select>
 
-<select id="listCount" resultType="_int">
-SELECT COUNT(*) COUNT
-FROM TRAINING
-WHERE STATUS = 'Y'
-</select>
+	<select id="selectShoesList" resultMap="shoesResultSet">
+		SELECT SHOES_NO,SHOES_NAME,STATUS FROM SHOES
+	</select>
+	<insert id="insertTraining" parameterType="Training"> 
+	INSERT INTO TRAINING (TRAINING_NO
+						,MEMBER_NO
+						,TRAINING_TITLE
+						,TRAINING_KEY
+						,SHOES_NO
+						,TRAINING_DATE
+						,TRAINING_PLACE
+						,TRAINING_TIME
+						,TRAINING_GOAL
+						,TRAINING_DISTANCE
+						,WEIGHT
+						,TRAINING_CONTENT
+						)VALUES(#{trainingNo}
+						,#{trainingWriter} 
+						,#{trainingTitle} 
+						,#{trainingKey} 
+						,#{shoesNo}
+						,#{trainingDate} 
+						,#{trainingPlace} 
+						,#{trainingTime}
+						,#{trainingGoal}
+						,#{trainingDistance} 
+						,#{weight} 
+						,#{trainingContent} 
+						)
+	</insert>
+	<update id="increaseCount" parameterType="_int">
+		UPDATE TRAINING
+		SET
+		COUNT = COUNT +1
+		WHERE TRAINING_NO = #{trainingNo}
+		AND STATUS = 'Y'
+	</update>
 
-<select id="selectList" resultMap="trainingResultSet">
-SELECT TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS
-FROM TRAINING T
-JOIN MEMBER M USING(MEMBER_NO)
-WHERE T.STATUS = 'Y'
-ORDER BY RECORD_DATE DESC
-</select>
+	<select id="listCount" resultType="_int">
+		SELECT COUNT(*) COUNT
+		FROM
+		TRAINING
+		WHERE STATUS = 'Y'
+	</select>
 
-<!--  <select id="selectTrainingNo">
-SELECT SEQ_TNO.NEXTVAL TNO FROM DUAL
-</select>
+	<select id="selectList" resultMap="trainingResultSet">
+		SELECT
+		TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS
+		FROM
+		TRAINING T
+		JOIN MEMBER M USING(MEMBER_NO)
+		WHERE T.STATUS = 'Y'
+		ORDER BY
+		RECORD_DATE DESC
+	</select>
 
-<insert id="insertAttachment">
-INSERT INTO ATTACHMENT_TRAINING(FILE_NO,REF_BNO,FILE_NAME,FILE_RENAME,FILE_PATH,BOARD_ID)
-VALUES(SEQ_ATT.NEXTVAL,?,?,?,?,2)
-</insert> -->
+	<!-- <select id="selectTrainingNo"> SELECT SEQ_TNO.NEXTVAL TNO FROM DUAL 
+		</select> <insert id="insertAttachment"> INSERT INTO ATTACHMENT_TRAINING(FILE_NO,REF_BNO,FILE_NAME,FILE_RENAME,FILE_PATH,BOARD_ID) 
+		VALUES(SEQ_ATT.NEXTVAL,?,?,?,?,2) </insert> -->
 
-<select id="selectTraining" parameterType="_int" resultMap="trainingResultSet">
-SELECT 
-	TRAINING_NO,
-	MEMBER_NAME,
-	TRAINING_TITLE, 
-	COUNT,
-	TRAINING_NAME,
-	SHOES_NO,
-	TRAINING_DATE,
-	RECORD_DATE,
-	TRAINING_PLACE,
-	TRAINING_TIME,
-	TRAINING_GOAL,
-	TRAINING_DISTANCE,
-	T.WEIGHT WEIGHT,
-	TRAINING_CONTENT,
-	OCSTATUS
-FROM TRAINING T
-JOIN MEMBER M USING(MEMBER_NO) 
-JOIN TRAINING_CATEGORY TC ON (T.TRAINING_KEY = TC.TRAINING_KEY)
-WHERE TRAINING_NO = #{trainingNo}
-AND T.STATUS = 'Y'
-</select>
-<!-- <select id="selectAttachment" resultMap="attachmentResultSet">
-SELECT FILE_NO,FILE_NAME,FILE_RENAME,FILE_PATH
-FROM ATTACHMENT_TRAINING WHERE REF_BNO = ?
-</select>
-
-<update id="updateTraining" parameterType="Training">
-UPDATE TRAINING SET TRAINING_TITLE = ? 
-					,TRAINING_KEY = ?
-					,TRAINING_DATE = ?
-					,TRAINING_PLACE = ?
-					,TRAINING_TIME = ?
-					,TRAINING_GOAL = ?
-					,TRAINING_DISTANCE = ?
-					,WEIGHT = ?
-					,TRAINING_CONTENT = ?
-					,OCSTATUS = ?
-WHERE TRAINING_NO = ?
-</update>
-
-<update id="updateAttachment" parameterType="Attachment">
-UPDATE ATTACHMENT_TRAINING SET FILE_NAME = ? 
-                    ,FILE_RENAME = ?
-WHERE FILE_NO = ?
-</update>
-
-<update id="deleteTraining" parameterType="_int">
-UPDATE TRAINING SET STATUS = 'N'
-WHERE TRAINING_NO = ?
-</update>
-
-<insert id="Reply">
-INSERT INTO REPLY_TRAINING VALUES(SEQ_RNO.NEXTVAL,?,?,?,SYSDATE,DEFAULT)
-</insert>
-
-<select id="selectReplyList" parameterType="_int" resultMap="replyResultSet">
-SELECT REPLY_NO
-	,REPLY_CONTENT
-    ,MEMBER_NAME
-    ,CREATE_DATE
-FROM REPLY_TRAINING R
-JOIN MEMBER M ON(R.REPLY_WRITER = M.MEMBER_NO)
-WHERE R.REF_TNO = ?
-AND R.STATUS = 'Y' 
-</select>
-
-<update id="deleteReply" parameterType="_int">
-UPDATE REPLY_TRAINING
-SET STATUS = 'N'
-WHERE REPLY_NO = ?
-</update>
-
-<update id="updateReply" parameterType="Reply">
-UPDATE REPLY_TRAINING
-SET REPLY_CONTENT = ?
-WHERE REPLY_CONTENT = ?
-AND REF_TNO = ?
-AND REPLY_WRITER = ?
-</update>
-
-<update id="updateLikes">
-UPDATE TRAINING
-SET LIKES = LIKES +1
-WHERE TRAINING_NO = ?
-</update>
-
-<select id="selectLikes">
-SELECT LIKES
-FROM TRAINING
-WHERE TRAINING_NO = ?
-</select>
-
-<select id="selectShoesList" resultMap="">
-SELECT SHOES_NO,SHOES_NAME,STATUS
-FROM SHOES
-</select>
-
-<select id="select" resultMap="">
-SELECT SHOES_NO,SHOES_NAME
-FROM SHOES
-RIGHT JOIN TRAINING USING(SHOES_NO)
-WHERE TRAINING_NO = ?
-</select>
-
-<select id="searchByTitle" resultMap="trainingResultSet">
-SELECT * FROM (
-SELECT ROWNUM RNUM, S.* 
-FROM(SELECT TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS
-FROM TRAINING T
-JOIN MEMBER M USING(MEMBER_NO)
-WHERE T.STATUS = 'Y'
-AND TRAINING_TITLE LIKE ?
-ORDER BY RECORD_DATE DESC)S)
-WHERE RNUM BETWEEN ? AND ?
-</select>
-
-<select id="searchByCategory" resultMap="trainingResultSet">
-SELECT * FROM (
-SELECT ROWNUM RNUM, S.* 
-FROM(SELECT TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS
-FROM TRAINING T
-JOIN MEMBER M ON(T.MEMBER_NO=M.MEMBER_NO)
-JOIN TRAINING_CATEGORY TC ON(T.TRAINING_KEY = TC.TRAINING_KEY)
-WHERE T.STATUS = 'Y'
-AND TC.TRAINING_NAME LIKE ?
-ORDER BY RECORD_DATE DESC)S)
-WHERE RNUM BETWEEN ? AND ?
-</select>
-
-<select id="searchByContent" resultMap="trainingResultSet">
-SELECT * FROM (
-SELECT ROWNUM RNUM, S.* 
-FROM(SELECT TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS
-FROM TRAINING T
-JOIN MEMBER M ON(T.MEMBER_NO=M.MEMBER_NO)
-WHERE T.STATUS = 'Y'
-AND T.TRAINING_CONTENT LIKE ?
-ORDER BY RECORD_DATE DESC)S)
-WHERE RNUM BETWEEN ? AND ?
-</select> -->
+	<select id="selectTraining" parameterType="_int"
+		resultMap="trainingResultSet">
+		SELECT
+		TRAINING_NO,
+		MEMBER_NAME,
+		TRAINING_TITLE,
+		COUNT,
+		TRAINING_NAME,
+		SHOES_NO,
+		TRAINING_DATE,
+		RECORD_DATE,
+		TRAINING_PLACE,
+		TRAINING_TIME,
+		TRAINING_GOAL,
+		TRAINING_DISTANCE,
+		T.WEIGHT WEIGHT,
+		TRAINING_CONTENT,
+		OCSTATUS
+		FROM TRAINING T
+		JOIN MEMBER M USING(MEMBER_NO)
+		JOIN TRAINING_CATEGORY TC ON (T.TRAINING_KEY = TC.TRAINING_KEY)
+		WHERE
+		TRAINING_NO = #{trainingNo}
+		AND T.STATUS = 'Y'
+	</select>
+	<!-- <select id="selectAttachment" resultMap="attachmentResultSet"> SELECT 
+		FILE_NO,FILE_NAME,FILE_RENAME,FILE_PATH FROM ATTACHMENT_TRAINING WHERE REF_BNO 
+		= ? </select> <update id="updateTraining" parameterType="Training"> UPDATE 
+		TRAINING SET TRAINING_TITLE = ? ,TRAINING_KEY = ? ,TRAINING_DATE = ? ,TRAINING_PLACE 
+		= ? ,TRAINING_TIME = ? ,TRAINING_GOAL = ? ,TRAINING_DISTANCE = ? ,WEIGHT 
+		= ? ,TRAINING_CONTENT = ? ,OCSTATUS = ? WHERE TRAINING_NO = ? </update> <update 
+		id="updateAttachment" parameterType="Attachment"> UPDATE ATTACHMENT_TRAINING 
+		SET FILE_NAME = ? ,FILE_RENAME = ? WHERE FILE_NO = ? </update> <update id="deleteTraining" 
+		parameterType="_int"> UPDATE TRAINING SET STATUS = 'N' WHERE TRAINING_NO 
+		= ? </update> <insert id="Reply"> INSERT INTO REPLY_TRAINING VALUES(SEQ_RNO.NEXTVAL,?,?,?,SYSDATE,DEFAULT) 
+		</insert> <select id="selectReplyList" parameterType="_int" resultMap="replyResultSet"> 
+		SELECT REPLY_NO ,REPLY_CONTENT ,MEMBER_NAME ,CREATE_DATE FROM REPLY_TRAINING 
+		R JOIN MEMBER M ON(R.REPLY_WRITER = M.MEMBER_NO) WHERE R.REF_TNO = ? AND 
+		R.STATUS = 'Y' </select> <update id="deleteReply" parameterType="_int"> UPDATE 
+		REPLY_TRAINING SET STATUS = 'N' WHERE REPLY_NO = ? </update> <update id="updateReply" 
+		parameterType="Reply"> UPDATE REPLY_TRAINING SET REPLY_CONTENT = ? WHERE 
+		REPLY_CONTENT = ? AND REF_TNO = ? AND REPLY_WRITER = ? </update> <update 
+		id="updateLikes"> UPDATE TRAINING SET LIKES = LIKES +1 WHERE TRAINING_NO 
+		= ? </update> <select id="selectLikes"> SELECT LIKES FROM TRAINING WHERE 
+		TRAINING_NO = ? </select> <select id="select" resultMap=""> SELECT SHOES_NO,SHOES_NAME 
+		FROM SHOES RIGHT JOIN TRAINING USING(SHOES_NO) WHERE TRAINING_NO = ? </select> 
+		<select id="searchByTitle" resultMap="trainingResultSet"> SELECT * FROM ( 
+		SELECT ROWNUM RNUM, S.* FROM(SELECT TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS 
+		FROM TRAINING T JOIN MEMBER M USING(MEMBER_NO) WHERE T.STATUS = 'Y' AND TRAINING_TITLE 
+		LIKE ? ORDER BY RECORD_DATE DESC)S) WHERE RNUM BETWEEN ? AND ? </select> 
+		<select id="searchByCategory" resultMap="trainingResultSet"> SELECT * FROM 
+		( SELECT ROWNUM RNUM, S.* FROM(SELECT TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS 
+		FROM TRAINING T JOIN MEMBER M ON(T.MEMBER_NO=M.MEMBER_NO) JOIN TRAINING_CATEGORY 
+		TC ON(T.TRAINING_KEY = TC.TRAINING_KEY) WHERE T.STATUS = 'Y' AND TC.TRAINING_NAME 
+		LIKE ? ORDER BY RECORD_DATE DESC)S) WHERE RNUM BETWEEN ? AND ? </select> 
+		<select id="searchByContent" resultMap="trainingResultSet"> SELECT * FROM 
+		( SELECT ROWNUM RNUM, S.* FROM(SELECT TRAINING_NO,TRAINING_TITLE,MEMBER_NAME,RECORD_DATE,COUNT,OCSTATUS 
+		FROM TRAINING T JOIN MEMBER M ON(T.MEMBER_NO=M.MEMBER_NO) WHERE T.STATUS 
+		= 'Y' AND T.TRAINING_CONTENT LIKE ? ORDER BY RECORD_DATE DESC)S) WHERE RNUM 
+		BETWEEN ? AND ? </select> -->
 </mapper>

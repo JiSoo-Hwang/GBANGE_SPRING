@@ -23,17 +23,22 @@ public class TrainingServiceImpl implements TrainingService {
 	
 	@Autowired
 	private TrainingDao trainingDao;
-	/*
+	
 	@Override
 	public ArrayList<TrainingCategory> selectCategoryList() {
 		return trainingDao.selectCategoryList(sqlSession);
 	}
 
 	@Override
+	public ArrayList<Shoes> selectShoesList() {
+		return trainingDao.selectShoesList(sqlSession);
+	}
+
+	@Override
 	public int insertTraining(HashMap<Training, Attachment> map) {
 		return trainingDao.insertTraining(sqlSession, map);
 	}
-*/
+
 	@Override
 	public int increaseCount(int trainingNo) {
 		return trainingDao.increaseCount(sqlSession, trainingNo);
@@ -55,8 +60,8 @@ public class TrainingServiceImpl implements TrainingService {
 	/*
 
 	@Override
-	public Attachment selectAttachment(int tno) {
-		return trainingDao.selectAttachment(sqlSession, tno);
+	public Attachment selectAttachment(int trainingNo) {
+		return trainingDao.selectAttachment(sqlSession, trainingNo);
 	}
 
 	@Override
@@ -65,8 +70,8 @@ public class TrainingServiceImpl implements TrainingService {
 	}
 
 	@Override
-	public int deleteTraining(int tno) {
-		return trainingDao.deleteTraining(sqlSession, tno);
+	public int deleteTraining(int trainingNo) {
+		return trainingDao.deleteTraining(sqlSession, trainingNo);
 	}
 
 	@Override
@@ -75,8 +80,8 @@ public class TrainingServiceImpl implements TrainingService {
 	}
 
 	@Override
-	public ArrayList<Reply> selectReplyList(int refTno) {
-		return trainingDao.selectReplyList(sqlSession, refTno);
+	public ArrayList<Reply> selectReplyList(int reftrainingNo) {
+		return trainingDao.selectReplyList(sqlSession, reftrainingNo);
 	}
 
 	@Override
@@ -85,28 +90,24 @@ public class TrainingServiceImpl implements TrainingService {
 	}
 
 	@Override
-	public int updateReply(String originReply, String changeReply, String replyWriter, int refTno) {
-		return trainingDao.updateReply(sqlSession, originReply, changeReply, refTno, replyWriter);
+	public int updateReply(String originReply, String changeReply, String replyWriter, int reftrainingNo) {
+		return trainingDao.updateReply(sqlSession, originReply, changeReply, reftrainingNo, replyWriter);
 	}
 
 	@Override
-	public int updateLikes(int tno) {
-		return trainingDao.updateLikes(sqlSession, tno);
+	public int updateLikes(int trainingNo) {
+		return trainingDao.updateLikes(sqlSession, trainingNo);
 	}
 
 	@Override
-	public int selectLikes(int tno) {
-		return trainingDao.selectLikes(sqlSession, tno);
+	public int selectLikes(int trainingNo) {
+		return trainingDao.selectLikes(sqlSession, trainingNo);
 	}
 
-	@Override
-	public ArrayList<Shoes> selectShoesList() {
-		return trainingDao.selectShoesList(sqlSession);
-	}
 
 	@Override
-	public Shoes selectShoes(int tno) {
-		return trainingDao.selectShoes(sqlSession, tno);
+	public Shoes selectShoes(int trainingNo) {
+		return trainingDao.selectShoes(sqlSession, trainingNo);
 	}
 
 	@Override

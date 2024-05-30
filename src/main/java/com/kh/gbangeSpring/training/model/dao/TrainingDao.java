@@ -16,19 +16,24 @@ import com.kh.gbangeSpring.training.model.vo.TrainingCategory;
 
 @Repository
 public class TrainingDao {
-	/*
+	
 	public ArrayList<TrainingCategory> selectCategoryList(SqlSessionTemplate sqlSession) {
-		ArrayList<TrainingCategory> tCList = new ArrayList<>();
 		
-		return tCList;
+		return (ArrayList)sqlSession.selectList("trainingMapper.selectCategoryList");
+	}
+	
+	public ArrayList<Shoes> selectShoesList(SqlSessionTemplate sqlSession) {
+		ArrayList<Shoes> sList = new ArrayList<>();
+		return (ArrayList)sqlSession.selectList("trainingMapper.selectShoesList");
 	}
 
+	
 	public int insertTraining(SqlSessionTemplate sqlSession, HashMap<Training, Attachment> map) {
-		int result = 0;
+		int result = sqlSession.insert("trainingMapper.insertTraining",map);
 		return result;
 	}
-
-	 */
+	
+	 
 	public int increaseCount(SqlSessionTemplate sqlSession, int trainingNo) {
 		return sqlSession.update("trainingMapper.increaseCount",trainingNo);
 	}
@@ -60,7 +65,7 @@ public class TrainingDao {
 		return sqlSession.selectOne("trainingMapper.selectTraining",trainingNo);
 	}
 /*
-	public Attachment selectAttachment(SqlSessionTemplate sqlSession, int tno) {
+	public Attachment selectAttachment(SqlSessionTemplate sqlSession, int trainingNo) {
 		Attachment at = null;
 		return at;
 	}
@@ -75,7 +80,7 @@ public class TrainingDao {
 		return result;
 	}
 
-	public int deleteTraining(SqlSessionTemplate sqlSession, int tno) {
+	public int deleteTraining(SqlSessionTemplate sqlSession, int trainingNo) {
 		int result = 0;
 		return result;
 	}
@@ -85,7 +90,7 @@ public class TrainingDao {
 		return result;
 	}
 
-	public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, int refTno) {
+	public ArrayList<Reply> selectReplyList(SqlSessionTemplate sqlSession, int reftrainingNo) {
 		ArrayList<Reply> list = new ArrayList<>();
 		return list;
 	}
@@ -95,27 +100,23 @@ public class TrainingDao {
 		return result;
 	}
 
-	public int updateReply(SqlSessionTemplate sqlSession, String originReply, String changeReply, int refTno, String replyWriter) {
+	public int updateReply(SqlSessionTemplate sqlSession, String originReply, String changeReply, int reftrainingNo, String replyWriter) {
 		int result = 0;
 		return result;
 	}
 
-	public int updateLikes(SqlSessionTemplate sqlSession, int tno) {
+	public int updateLikes(SqlSessionTemplate sqlSession, int trainingNo) {
 		int result = 0;
 		return result;
 	}
 
-	public int selectLikes(SqlSessionTemplate sqlSession, int tno) {
+	public int selectLikes(SqlSessionTemplate sqlSession, int trainingNo) {
 		int likes = 0;
 		return likes;
 	}
 
-	public ArrayList<Shoes> selectShoesList(SqlSessionTemplate sqlSession) {
-		ArrayList<Shoes> sList = new ArrayList<>();
-		return sList;
-	}
 
-	public Shoes selectShoes(SqlSessionTemplate sqlSession, int tno) {
+	public Shoes selectShoes(SqlSessionTemplate sqlSession, int trainingNo) {
 		Shoes s = null;
 		return s;
 	}

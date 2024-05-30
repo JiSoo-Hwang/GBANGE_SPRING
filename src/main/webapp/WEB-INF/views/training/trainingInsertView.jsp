@@ -207,8 +207,7 @@ label {
 							</tr>
 							<tr>
 								<th>멋진 인증샷</th>
-								<td><label for="uploadImg" class="upload-btn">사진
-										올리기</label><input type="file" name="uploadImg" id="uploadImg"></td>
+								<td><label for="uploadImg" class="upload-btn">사진 올리기</label><input type="file" name="uploadImg" id="uploadImg"></td>
 								<th></th>
 								<td></td>
 							</tr>

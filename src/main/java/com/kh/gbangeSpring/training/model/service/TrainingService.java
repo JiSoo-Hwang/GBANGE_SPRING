@@ -11,11 +11,12 @@ import com.kh.gbangeSpring.training.model.vo.Training;
 import com.kh.gbangeSpring.training.model.vo.TrainingCategory;
 
 public interface TrainingService {
-	/*
+	
 	public ArrayList<TrainingCategory> selectCategoryList();
+	public ArrayList<Shoes> selectShoesList();
 
 	public int insertTraining(HashMap<Training, Attachment> map);
-*/
+
 	public int increaseCount(int trainingNo);
 
 	public int listCount();
@@ -23,27 +24,26 @@ public interface TrainingService {
 	public Training selectTraining(int trainingNo);
 
 	/*
-	public Attachment selectAttachment(int tno);
+	public Attachment selectAttachment(int trainingNo);
 
 	public int updateTraining(Training t, Attachment at);
 
-	public int deleteTraining(int tno);
+	public int deleteTraining(int trainingNo);
 
 	public int insertReply(Reply r);
 
-	public ArrayList<Reply> selectReplyList(int refTno);
+	public ArrayList<Reply> selectReplyList(int reftrainingNo);
 
 	public int deleteReply(Reply r);
 
-	public int updateReply(String originReply, String changeReply, String replyWriter, int refTno);
+	public int updateReply(String originReply, String changeReply, String replyWriter, int reftrainingNo);
 
-	public int updateLikes(int tno);
+	public int updateLikes(int trainingNo);
 
-	public int selectLikes(int tno);
+	public int selectLikes(int trainingNo);
 
-	public ArrayList<Shoes> selectShoesList();
 
-	public Shoes selectShoes(int tno);
+	public Shoes selectShoes(int trainingNo);
 
 	public ArrayList<Training> searchByTitle(PageInfo pi,String keyword);
 

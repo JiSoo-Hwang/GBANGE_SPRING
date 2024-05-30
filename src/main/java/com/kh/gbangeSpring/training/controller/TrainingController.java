@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -33,22 +34,29 @@ public class TrainingController {
 	@Autowired
 	private TrainingService trainingService;
 	
-	/*
+	
 	@GetMapping("insert.tr")
 	public ModelAndView insertTrainingForm(ModelAndView mv) {
 		
 		ArrayList<TrainingCategory> tCList = trainingService.selectCategoryList();
 		ArrayList<Shoes>sList = trainingService.selectShoesList();
-		mv.addObject("", tCList);
+		mv.addObject("tCList", tCList);
 		mv.addObject("sList", sList);
 		mv.setViewName("training/trainingDetailView");
 		return mv;
 	}
 	
 	@PostMapping("insert.tr")
-	public String insertTraining(Training training,Attachment attachment
+	public String insertTraining(Training training
+								,boolean secret
+								,Attachment attachment
 								,MultipartFile uploadImg
 								,HttpSession session) {
+		if(secret) {
+			training.setOcStatus("C");
+		}else {
+			training.setOcStatus("O");
+		}
 		HashMap<Training,Attachment> map = new HashMap<Training,Attachment>();
 		map.put(training, attachment);
 		
@@ -71,17 +79,17 @@ public class TrainingController {
 		int result = trainingService.insertTraining(map);
 		if(result>0) {
 			session.setAttribute("alertMsg", "일지 작성 성공!");
-			return "/detail.tr?tno="+training.getTrainingNo();
+			return "/detail.tr?trainingNo="+training.getTrainingNo();
 		}else {
 			session.setAttribute("alertMsg", "일지 작성 실패ㅠㅠ");
-			return "/list.tr?currentPage=1";
+			return "redirect:/list.tr";
 			
 		}
 		
 	}
-	*/
+	
 	@RequestMapping("list.tr")
-	public String trainingList(int currentPage
+	public String trainingList(@RequestParam(value = "currentPage",defaultValue = "1")int currentPage
 							,Model model) {
 		int listCount = trainingService.listCount();
 		int pageLimit = 10;
