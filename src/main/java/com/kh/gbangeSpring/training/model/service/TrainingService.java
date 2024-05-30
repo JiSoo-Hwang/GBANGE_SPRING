@@ -16,7 +16,7 @@ public interface TrainingService {
 
 	public int insertTraining(HashMap<Training, Attachment> map);
 */
-	public int increaseCount(int tno);
+	public int increaseCount(int trainingNo);
 
 	public int listCount();
 	public ArrayList<Training> selectList(PageInfo pi);

@@ -29,13 +29,11 @@ public class TrainingDao {
 	}
 
 	 */
-	public int increaseCount(SqlSessionTemplate sqlSession, int tno) {
-		int result = 0;
-		return result;
+	public int increaseCount(SqlSessionTemplate sqlSession, int trainingNo) {
+		return sqlSession.update("trainingMapper.increaseCount",trainingNo);
 	}
 	public int listCount(SqlSessionTemplate sqlSession) {
 		int listCount = sqlSession.selectOne("trainingMapper.listCount");
-		System.out.println(listCount);
 		return listCount;
 	}
 
@@ -59,7 +57,6 @@ public class TrainingDao {
 	}
 */
 	public Training selectTraining(SqlSessionTemplate sqlSession, int trainingNo) {
-		
 		return sqlSession.selectOne("trainingMapper.selectTraining",trainingNo);
 	}
 /*

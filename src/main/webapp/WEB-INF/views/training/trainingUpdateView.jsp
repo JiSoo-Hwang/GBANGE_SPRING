@@ -271,7 +271,7 @@ label {
 		<script type="text/javascript">
 		$(function () {
 			var selected = "${training.trainingKey}";
-			var secret = "${training.oCStatus}";
+			var secret = "${training.ocStatus}";
 			var shoes = "${shoes.shoesName}";
 			$("#trainingCategory-area option").each(function() {
 				if($(this).text()==selected){

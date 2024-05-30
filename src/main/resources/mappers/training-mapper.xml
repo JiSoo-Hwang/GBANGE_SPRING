@@ -19,7 +19,7 @@
 		<result column="WEIGHT" property="weight"/>
 		<result column="TRAINING_CONTENT" property="trainingContent"/>
 		<result column="BOARD_ID" property="boardId"/>
-		<result column="OCSTATUS" property="oCStatus"/>
+		<result column="OCSTATUS" property="ocStatus"/>
 		<result column="STATUS" property="status" />
 	</resultMap>
 
@@ -93,7 +93,7 @@ VALUES (#{trainingNo}
 		,#{weight}
 		,#{trainingContent}
 		,#{boardId}
-		,#{oCStatus}
+		,#{ocStatus}
 		,#{status}
 		)
 </insert>
@@ -128,7 +128,7 @@ INSERT INTO ATTACHMENT_TRAINING(FILE_NO,REF_BNO,FILE_NAME,FILE_RENAME,FILE_PATH,
 VALUES(SEQ_ATT.NEXTVAL,?,?,?,?,2)
 </insert> -->
 
-<select id="selectTraining" resultMap="trainingResultSet">
+<select id="selectTraining" parameterType="_int" resultMap="trainingResultSet">
 SELECT 
 	TRAINING_NO,
 	MEMBER_NAME,

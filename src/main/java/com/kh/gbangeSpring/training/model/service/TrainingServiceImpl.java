@@ -35,8 +35,8 @@ public class TrainingServiceImpl implements TrainingService {
 	}
 */
 	@Override
-	public int increaseCount(int tno) {
-		return trainingDao.increaseCount(sqlSession, tno);
+	public int increaseCount(int trainingNo) {
+		return trainingDao.increaseCount(sqlSession, trainingNo);
 	}
 
 	@Override

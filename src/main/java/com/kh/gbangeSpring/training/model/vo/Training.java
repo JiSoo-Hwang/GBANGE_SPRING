@@ -40,7 +40,7 @@ public class Training {
 //	BOARD_ID
 	private int boardId;
 
-	private String oCStatus;
+	private String ocStatus;
 
 	private String status;
 }

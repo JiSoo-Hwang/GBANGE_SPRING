@@ -411,7 +411,7 @@ function updateReply(){
 		
 		$(function() {
 			replyList();
-			let open = "${training.oCStatus}"=='C';
+			let open = "${training.ocStatus}"=='C';
 			let writer = "${loginUser.memberName}"!="${training.trainingWriter}";
 			if(open&&writer){
 				$("#board_wrap").css("display","none");

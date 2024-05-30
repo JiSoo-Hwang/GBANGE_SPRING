@@ -95,7 +95,7 @@ public class TrainingController {
 		
 		return "training/trainingListView";
 	}
-	/*
+	
 	@RequestMapping("detail.tr")
 	public ModelAndView selectTraining(int trainingNo
 								,ModelAndView mv) {
@@ -104,9 +104,9 @@ public class TrainingController {
 			Training t = trainingService.selectTraining(trainingNo);
 			mv.addObject("training", t).setViewName("training/trainingDetailView");
 		}else {
-			mv.addObject("alertMsg", "일지 조회 실패ㅠㅠ").setViewName("common/header");
+			mv.addObject("alertMsg", "일지 조회 실패ㅠㅠ").setViewName("redirect:list.tr");
 		}
 		return mv;
 	}
-	*/
+	
 }
